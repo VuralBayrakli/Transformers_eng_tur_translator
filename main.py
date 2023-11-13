@@ -392,5 +392,30 @@ for epoch in tqdm(range(N_EPOCHS), desc="Epoch"):
         tqdm.write(f"Early stopping triggered in epoch {epoch + 1}")
         # Döngüyü sonlandır
         break
+
+def predict_transformer(text, model, 
+                        src_vocab=en_vocab, 
+                        src_tokenizer=en_tokenizer, 
+                        tgt_vocab=fr_vocab, 
+                        device=device):
+    
+    input_ids = [src_vocab[token] for token in src_tokenizer(text)]
+    input_ids = [BOS_IDX] + input_ids + [EOS_IDX]
+    
+    model.eval()
+    with torch.no_grad():
+        input_tensor = torch.tensor(input_ids).to(device).unsqueeze(1) # add fake batch dim
+        
+        causal_out = torch.ones(MAX_SENTENCE_LENGTH, 1).long().to(device) * BOS_IDX
+        for t in range(1, MAX_SENTENCE_LENGTH):
+            decoder_output = transformer(input_tensor, causal_out[:t, :])[-1, :, :]
+            next_token = decoder_output.data.topk(1)[1].squeeze()
+            causal_out[t, :] = next_token
+            if next_token.item() == EOS_IDX:
+                break
+                
+        pred_words = [tgt_vocab.lookup_token(tok.item()) for tok in causal_out.squeeze(1)[1:(t)]]
+        return " ".join(pred_words)
         
         
+predict_transformer("she is not my mother .", transformer)
