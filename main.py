@@ -275,6 +275,49 @@ class TransformerModel(nn.Module):
         
         return src_embeds, tgt_embeds
 
+def train_transformer(model, iterator, optimizer, loss_fn, device, clip=None):
+    model.train()
+
+    epoch_loss = 0
+    with tqdm(total=len(iterator), leave=False) as t:
+        for i, (src, tgt) in enumerate(iterator):
+            src = src.to(device)
+            tgt = tgt.to(device)
+
+            # Create tgt_inp and tgt_out (which is tgt_inp but shifted by 1)
+            tgt_inp, tgt_out = tgt[:-1, :], tgt[1:, :]
+
+            tgt_mask = model.transformer.generate_square_subsequent_mask(tgt_inp.size(0)).to(device)
+            src_key_padding_mask = (src == PAD_IDX).transpose(0, 1)
+            tgt_key_padding_mask = (tgt_inp == PAD_IDX).transpose(0, 1)
+            memory_key_padding_mask = src_key_padding_mask.clone()
+
+            optimizer.zero_grad()
+
+            output = model(src=src, tgt=tgt_inp, 
+                           tgt_mask=tgt_mask,
+                           src_key_padding_mask = src_key_padding_mask,
+                           tgt_key_padding_mask = tgt_key_padding_mask,
+                           memory_key_padding_mask = memory_key_padding_mask)
+
+            loss = loss_fn(output.view(-1, output.shape[2]),
+                           tgt_out.view(-1))
+
+            loss.backward()
+
+            if clip is not None:
+                nn.utils.clip_grad_norm_(model.parameters(), clip)
+
+            optimizer.step()
+            epoch_loss += loss.item()
+
+            avg_loss = epoch_loss / (i+1)
+            t.set_postfix(loss='{:05.3f}'.format(avg_loss),
+                          ppl='{:05.3f}'.format(np.exp(avg_loss)))
+            t.update()
+
+    return epoch_loss / len(iterator)
+
     
 def evaluate_transformer(model, iterator, loss_fn, device):
     model.eval()
