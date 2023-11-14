@@ -12,8 +12,8 @@ import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import DataLoader
 
-from torchtext.data.utils import get_tokenizer
-from torchtext.vocab import Vocab, build_vocab_from_iterator
+#from torchtext.data.utils import get_tokenizer
+#from torchtext.vocab import Vocab, build_vocab_from_iterator
 from collections import Counter 
 
 from tqdm import tqdm
