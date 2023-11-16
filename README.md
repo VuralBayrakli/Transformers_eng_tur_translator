@@ -8,7 +8,7 @@ Bu projede Transformers kullanılarak Türkçe İngilizce çevirisi yapabilen uy
 Projeyi `git` ile yükleyin
 
 ```bash
-    https://github.com/VuralBayrakli/Transformers_eng_tur_translator.git
+    git clone https://github.com/VuralBayrakli/Transformers_eng_tur_translator.git
 ```
 
 Modeli indirin ve proje klasörüne ekleyin
