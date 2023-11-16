@@ -1,0 +1,8 @@
+torch
+torchtext
+numpy
+pandas
+matplotlib
+tqdm
+spacy
+Tkinter

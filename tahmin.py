@@ -333,7 +333,7 @@ SendButton = Button(root, font=("Verdana",12,'bold'), text="Send", width="12", h
 #Create the box to enter message
 EntryBox = Text(root, bd=0, bg="white",width="29", height="5", font="Arial")
 #EntryBox.bind("<Return>", send)
-
+EntryBox.insert(END, "Buraya yazın...")
 
 #Place all components on the screen
 scrollbar.place(x=376,y=6, height=386)
