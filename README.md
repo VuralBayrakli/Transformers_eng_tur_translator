@@ -11,9 +11,8 @@ Projeyi `git` ile yükleyin
     https://github.com/VuralBayrakli/Transformers_eng_tur_translator.git
 ```
 
-Modeli indirin
+Modeli indirin ve proje klasörüne ekleyin
 https://github.com/VuralBayrakli/Transformers_eng_tur_translator/raw/master/transformer_en_tr_son2.pt?download=
-
 
 Ana Klasörüne Giriş Yapın
 
@@ -50,3 +49,11 @@ Projeyi çalıştırın
 ## Tahmin gerçekleştirme
 
 ![App Screenshot](https://github.com/VuralBayrakli/Transformers_eng_tur_translator/blob/master/screenshots/ss6.png)
+
+## Arayüz
+
+![App Screenshot](https://github.com/VuralBayrakli/Transformers_eng_tur_translator/blob/master/screenshots/ss10.png)
+
+## Çeviri Örnekleri
+
+![App Screenshot](https://github.com/VuralBayrakli/Transformers_eng_tur_translator/blob/master/screenshots/ss9.png)
