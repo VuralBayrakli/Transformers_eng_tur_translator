@@ -5,20 +5,32 @@ Bu projede Transformers kullanılarak Türkçe İngilizce çevirisi yapabilen uy
 
 ## Dosya Yükleme
 
-Projeyi `git` ile yüklemek için
+Projeyi `git` ile yükleyin
 
 ```bash
     git clone https://github.com/VuralBayrakli/veri_madenciligi_veri_manipulasyonu_ile_ev_tahmin_sistemi.git
 ```
 
-Ana Klasörüne Giriş Yaptıktan sonra
+Ana Klasörüne Giriş Yapın
 
-Gerekli kütüphanelerin yüklemek için
+Sanal ortam kurun
+
+```bash
+    python -m venv venvtranslator
+```
+
+Sanal ortamı aktive edin
+
+```bash
+    venvtranslator\Scripts\activate
+```
+
+Gerekli kütüphanelerin yükleyin
 ```bash
     pip install -r requirements.txt
 ```
 
-Projeyi çalıştırmak için
+Projeyi çalıştırın
 ```bash
     python tahmin.py
 ```
