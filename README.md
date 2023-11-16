@@ -12,8 +12,8 @@ Projeyi `git` ile yükleyin
 ```
 
 Modeli indirin
-
-    ### https://github.com/VuralBayrakli/Transformers_eng_tur_translator/raw/master/transformer_en_tr_son2.pt?download=
+```
+    https://github.com/VuralBayrakli/Transformers_eng_tur_translator/raw/master/transformer_en_tr_son2.pt?download=
 
 
 Ana Klasörüne Giriş Yapın
