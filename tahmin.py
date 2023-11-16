@@ -312,7 +312,7 @@ def send():
  
 
 root = Tk()
-root.title("Chatbot")
+root.title("Türkçe İngilizce Translator")
 root.geometry("400x500")
 root.resizable(width=FALSE, height=FALSE)
 
