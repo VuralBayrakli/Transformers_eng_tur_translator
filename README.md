@@ -8,12 +8,12 @@ Bu projede Transformers kullanılarak Türkçe İngilizce çevirisi yapabilen uy
 Projeyi `git` ile yükleyin
 
 ```bash
-    git clone https://github.com/VuralBayrakli/veri_madenciligi_veri_manipulasyonu_ile_ev_tahmin_sistemi.git
+    https://github.com/VuralBayrakli/Transformers_eng_tur_translator.git
 ```
 
 Modeli indirin
 
-```bash
+```
     https://github.com/VuralBayrakli/Transformers_eng_tur_translator/raw/master/transformer_en_tr_son2.pt?download=
 ```
 
